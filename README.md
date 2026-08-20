@@ -78,6 +78,12 @@ The main objective is to extend the `withdraw` instruction so that, after withdr
  +----------------------+
 ```
 
+## Demo Video
+
+A short walkthrough of the Vault architecture, program flow, and CPI-based registration.
+
+[![Watch the Turbine Prerequisite Challenge Walkthrough](https://img.youtube.com/vi/T4MkOpZ08zw/maxresdefault.jpg)](https://www.youtube.com/watch?v=T4MkOpZ08zw)
+
 ## Program Overview
 
 The system consists of two programs:
@@ -250,29 +256,13 @@ The modified Vault Program was deployed to Solana devnet and the complete flow w
 
 ### Verified Transactions
 
-**Initialize**
+- **Initialize the vault** — [View Transaction](https://explorer.solana.com/tx/EoVVvQgpmAwALMyXQifjeovEQqdHhe99WBEJ7NdPKacmxzWNDXxoXtoBFCeMpm13KjRpsPiQSzKEMn15YDBmK4M?cluster=devnet)
 
-```text
-EoVVvQgpmAwALMyXQifjeovEQqdHhe99WBEJ7NdPKacmxzWNDXxoXtoBFCeMpm13KjRpsPiQSzKEMn15YDBmK4M
-```
+- **Deposit 1 Sol in to the vault** — [View Transaction](https://explorer.solana.com/tx/9qwjZZ7QRnpgeEVCtQFmtCstrvP1CTXMMAYGx6J992AXxEDUXHmy2dkrm2vMuMUsHDFHze2zkkd6RC9X5LtfGE2?cluster=devnet)
 
-**Deposit**
+- **Withdraw 0.5 Sol from the vault + Registration CPI** — [View Transaction](https://explorer.solana.com/tx/3fAzEiegXk5Efre1gSBpLEFBeCtzhqf7QeKwZ5w8xSBvWaFs6p2KBWvdionwbyv7NzwjAKTrnLLUTNK6K48rbqDE?cluster=devnet)
 
-```text
-9qwjZZ7QRnpgeEVCtQFmtCstrvP1CTXMMAYGx6J992AXxEDUXHmy2dkrm2vMuMUsHDFHze2zkkd6RC9X5LtfGE2
-```
-
-**Withdraw + Registration CPI**
-
-```text
-3fAzEiegXk5Efre1gSBpLEFBeCtzhqf7QeKwZ5w8xSBvWaFs6p2KBWvdionwbyv7NzwjAKTrnLLUTNK6K48rbqDE
-```
-
-**Close**
-
-```text
-5T3Gw4k8RbYKngE5TpHdeMrsdEos5grHTGQgbA7wsFm3UdypVFCfTLWbaN2tLQC8cM6g5RXj6Y7BXBdPnTktyv4G
-```
+- **Close the Vault** — [View Transaction](https://explorer.solana.com/tx/5T3Gw4k8RbYKngE5TpHdeMrsdEos5grHTGQgbA7wsFm3UdypVFCfTLWbaN2tLQC8cM6g5RXj6Y7BXBdPnTktyv4G?cluster=devnet)
 
 The withdraw transaction contains the Registration Program's inner `initialize` instruction, confirming that registration was performed through CPI as part of the withdrawal transaction.
 
@@ -290,31 +280,6 @@ The Registration Program interface is available at:
 
 ---
 
-## Project Structure
-
-```text
-.
-├── programs/
-│   └── pre-req-vault/
-│       └── src/
-│           ├── instructions/
-│           │   └── withdraw.rs
-│           └── lib.rs
-│
-├── tests/
-│   └── pre-req-vault/
-│
-├── idls/
-│   └── registration.json
-│
-├── verify/
-│   └── withdraw-only.ts
-│
-└── Anchor.toml
-```
-
----
-
 ## Running Locally
 
 Build the program:
@@ -328,30 +293,3 @@ Run the tests against the deployed program:
 ```bash
 anchor test --skip-deploy
 ```
-
-Run the withdrawal verification:
-
-```bash
-npx ts-node verify/withdraw-only.ts
-```
-
----
-
-## Summary
-
-```text
-User
- |
- | withdraw()
- v
-Vault Program
- |
- +---- SOL ----> User
- |
- +---- CPI ----> Registration Program
-                       |
-                       v
-                Application PDA
-```
-
-The Vault Program manages the user's SOL through the Vault PDA, while the Registration Program manages the user's registration account. The `withdraw` instruction connects both programs through CPI in a single transaction.
