@@ -82,7 +82,9 @@ The main objective is to extend the `withdraw` instruction so that, after withdr
 
 A short walkthrough of the Vault architecture, program flow, and CPI-based registration.
 
-[![Watch the Turbine Prerequisite Challenge Walkthrough](https://img.youtube.com/vi/T4MkOpZ08zw/maxresdefault.jpg)](https://www.youtube.com/watch?v=T4MkOpZ08zw)
+https://www.youtube.com/watch?v=T4MkOpZ08zw
+
+---
 
 ## Program Overview
 
@@ -250,17 +252,22 @@ The Registration Program interface is provided through:
 
 ---
 
-## Verification
+## On-Chain Verification
 
-The modified Vault Program was deployed to Solana devnet and the complete flow was verified on-chain.
+The modified Vault Program was deployed to Solana Devnet and the complete flow was verified on-chain.
+
+**Vault Program ID:** `GUkfN2WWpev6PWc7ibsqwdKAB2RvkP7GrFSYLr9Tiv52`
+
+[View Program on Solana Explorer](https://explorer.solana.com/address/GUkfN2WWpev6PWc7ibsqwdKAB2RvkP7GrFSYLr9Tiv52?cluster=devnet)
+
 
 ### Verified Transactions
 
 - **Initialize the vault** — [View Transaction](https://explorer.solana.com/tx/EoVVvQgpmAwALMyXQifjeovEQqdHhe99WBEJ7NdPKacmxzWNDXxoXtoBFCeMpm13KjRpsPiQSzKEMn15YDBmK4M?cluster=devnet)
 
-- **Deposit 1 Sol in to the vault** — [View Transaction](https://explorer.solana.com/tx/9qwjZZ7QRnpgeEVCtQFmtCstrvP1CTXMMAYGx6J992AXxEDUXHmy2dkrm2vMuMUsHDFHze2zkkd6RC9X5LtfGE2?cluster=devnet)
+- **Deposit 1 SOL in to the vault** — [View Transaction](https://explorer.solana.com/tx/9qwjZZ7QRnpgeEVCtQFmtCstrvP1CTXMMAYGx6J992AXxEDUXHmy2dkrm2vMuMUsHDFHze2zkkd6RC9X5LtfGE2?cluster=devnet)
 
-- **Withdraw 0.5 Sol from the vault + Registration CPI** — [View Transaction](https://explorer.solana.com/tx/3fAzEiegXk5Efre1gSBpLEFBeCtzhqf7QeKwZ5w8xSBvWaFs6p2KBWvdionwbyv7NzwjAKTrnLLUTNK6K48rbqDE?cluster=devnet)
+- **Withdraw 0.5 SOL from the vault + Registration CPI** — [View Transaction](https://explorer.solana.com/tx/3fAzEiegXk5Efre1gSBpLEFBeCtzhqf7QeKwZ5w8xSBvWaFs6p2KBWvdionwbyv7NzwjAKTrnLLUTNK6K48rbqDE?cluster=devnet)
 
 - **Close the Vault** — [View Transaction](https://explorer.solana.com/tx/5T3Gw4k8RbYKngE5TpHdeMrsdEos5grHTGQgbA7wsFm3UdypVFCfTLWbaN2tLQC8cM6g5RXj6Y7BXBdPnTktyv4G?cluster=devnet)
 
